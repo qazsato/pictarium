@@ -1,7 +1,8 @@
-// import
-window.jQuery = $ = require('../components/jquery/jquery-2.1.4.min');
-require('../components/bootstrap/js/bootstrap');
-
 $(function () {
-  console.log("ready");
+  $('#camera-btn').on('click', function () {
+    alert("camera");
+  });
+  $('#roll-btn').on('click', function () {
+    alert("roll");
+  });
 });
