@@ -4,7 +4,7 @@ $(function () {
     reader.onload = function () {
       $('#picture').attr('src', reader.result);
       $('#picture-area').show();
-      $('#intro-area,#thanks-area').hide();
+      $('#intro-area,#thanks-area,#camera-area').hide();
     }
     var file = $("#image-file").get(0).files[0];
     reader.readAsDataURL(file);
@@ -20,7 +20,7 @@ $(function () {
       data: data,
       success: function(msg){
         // TODO 送信成功時の処理
-        $('#thanks-area').show();
+        $('#thanks-area,#camera-area').show();
         $('#intro-area,#picture-area').hide();
         $btn.removeAttr("disabled");
       },
@@ -29,6 +29,10 @@ $(function () {
         $btn.removeAttr("disabled");
       }
     });
+  });
 
+  $('#cancel-btn').on('click', function () {
+    $('#intro-area,#camera-area').show();
+    $('#thanks-area,#picture-area').hide();
   });
 });
