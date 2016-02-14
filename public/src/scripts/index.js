@@ -3,8 +3,7 @@ $(function () {
     var reader = new FileReader();
     reader.onload = function () {
       $('#picture').attr('src', reader.result);
-      $('#picture-area').show();
-      $('#intro-area,#thanks-area,#camera-area').hide();
+      showPictureView();
     }
     var file = $("#image-file").get(0).files[0];
     reader.readAsDataURL(file);
@@ -20,10 +19,9 @@ $(function () {
       data: data,
       success: function(msg){
         // TODO 送信成功時の処理
-        $('#thanks-area,#camera-area').show();
-        $('#intro-area,#picture-area').hide();
+        showThanksView();
         $('#upload-btn,#cancel-btn').removeAttr("disabled");
-        // hideLoading();
+        hideLoading();
       },
       error: function (e) {
         // TODO 送信失敗時の処理
@@ -34,15 +32,29 @@ $(function () {
   });
 
   $('#cancel-btn').on('click', function () {
-    $('#intro-area,#camera-area').show();
-    $('#thanks-area,#picture-area').hide();
+    showIntroView();
   });
 });
 
+var showIntroView = function () {
+  $('#intro-area,#camera-area').removeClass('none');
+  $('#thanks-area,#picture-area').addClass('none');
+};
+
+var showPictureView = function () {
+  $('#picture-area').removeClass('none');
+  $('#intro-area,#thanks-area,#camera-area').addClass('none');
+};
+
+var showThanksView = function () {
+  $('#thanks-area,#camera-area').removeClass('none');
+  $('#intro-area,#picture-area').addClass('none');
+};
+
 var showLoading = function () {
-  $('.spinner').html('<div class="mdl-spinner mdl-js-spinner is-active is-upgraded" data-upgraded=",MaterialSpinner"><div class="mdl-spinner__layer mdl-spinner__layer-1"><div class="mdl-spinner__circle-clipper mdl-spinner__left"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__gap-patch"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__circle-clipper mdl-spinner__right"><div class="mdl-spinner__circle"></div></div></div><div class="mdl-spinner__layer mdl-spinner__layer-2"><div class="mdl-spinner__circle-clipper mdl-spinner__left"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__gap-patch"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__circle-clipper mdl-spinner__right"><div class="mdl-spinner__circle"></div></div></div><div class="mdl-spinner__layer mdl-spinner__layer-3"><div class="mdl-spinner__circle-clipper mdl-spinner__left"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__gap-patch"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__circle-clipper mdl-spinner__right"><div class="mdl-spinner__circle"></div></div></div><div class="mdl-spinner__layer mdl-spinner__layer-4"><div class="mdl-spinner__circle-clipper mdl-spinner__left"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__gap-patch"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__circle-clipper mdl-spinner__right"><div class="mdl-spinner__circle"></div></div></div></div>');
+  $('.spinner').css('visibility', 'visible');
 };
 
 var hideLoading = function () {
-  $('.spinner').empty();
+  $('.spinner').css('visibility', 'hidden');
 };

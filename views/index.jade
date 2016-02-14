@@ -5,17 +5,19 @@ block style
 
 block content
   #intro-area
-    p Please your Photo!!
-
-  #picture-area
-    .picture-background
+    h3 Please your photo.
+    i.material-icons insert_photo
+  #picture-area.none
+    div
       img#picture(width='80%')
     .spinner
+      .mdl-spinner.mdl-js-spinner.is-active
     button#upload-btn.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent 送信
     button#cancel-btn.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect キャンセル
 
-  #thanks-area
-    p Thank you so much!!
+  #thanks-area.none
+    h3 Thank you so much.
+    i.material-icons favorite
 
   #camera-area
     button#camera-btn.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored
