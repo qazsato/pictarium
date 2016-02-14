@@ -4,12 +4,21 @@ block style
   link(rel='stylesheet', href='/styles/index.css')
 
 block content
-  section
-    button#camera-btn.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored
+  #intro-area
+    p Please your Photo!!
+
+  #picture-area
+    .picture-background
+      img#picture(width='80%')
+    button#upload-btn.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent 送信
+
+  #thanks-area
+    p Thank you so much!!
+
+  #camera-area
+    button.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored
       i.material-icons photo_camera
-  section
-    button#roll-btn.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored
-      i.material-icons camera_roll
+    input#image-file(type='file', accept='image/*')
 
 block script
   script(type='text/javascript', src='/scripts/index.js')

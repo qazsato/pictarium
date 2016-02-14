@@ -20,14 +20,16 @@ app.set('view engine', 'jade');
 // mount app
 app.use(favicon(path.join(__dirname, 'public/dist/favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: false}));
+
 app.use(cookieParser());
 app.use(compression());
 app.use(express.static(path.join(__dirname, 'public/dist'), {maxAge: 86400000 * 30}));
 
 // define routes
 app.use('/', require('./routes/index'));
+app.use('/upload', require('./routes/upload'));
 
 // error handlers
 app.use((req, res, next) => {

@@ -4,8 +4,52 @@ html,body {
   background-color: rgb(63,81,181);
 }
 
-section {
-  display: flex;
+#intro-area {
   width: 100%;
-  height: 50%;
+  height: 100%;
+  p {
+    padding: 40px;
+    color: white;
+    font-size: 30px;
+  }
+}
+
+#picture-area {
+  display: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  .picture-background {
+    padding: 30px 0;
+  }
+  #upload-btn {
+    width: 120px;
+  }
+}
+
+#thanks-area {
+  display: none;
+  width: 100%;
+  height: 100%;
+  p {
+    padding: 40px;
+    color: white;
+    font-size: 30px;
+  }
+}
+
+#camera-area {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  #image-file {
+    opacity: 0;
+    position: relative;
+    top: -60px;
+    height: 60px;
+    width: 60px;
+  }
 }
