@@ -24,7 +24,7 @@ $(function () {
     $.ajax({
       type: 'POST',
       url: '/upload',
-      data: $('#picture').attr('src'),
+      data: {src: $('#picture').attr('src')},
       success: function(msg){
         // TODO 送信成功時の処理
         hideLoading();
