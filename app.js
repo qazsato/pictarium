@@ -28,8 +28,9 @@ app.use(compression());
 app.use(express.static(path.join(__dirname, 'public/dist'), {maxAge: 86400000 * 30}));
 
 // define routes
-app.use('/', require('./routes/index'));
-app.use('/upload', require('./routes/upload'));
+app.use('/', require('./routes/top'));
+app.use('/slide', require('./routes/slide'));
+app.use('/picture', require('./routes/picture'));
 
 // error handlers
 app.use((req, res, next) => {

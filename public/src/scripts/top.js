@@ -23,7 +23,7 @@ $(function () {
     showLoading();
     $.ajax({
       type: 'POST',
-      url: '/upload',
+      url: '/picture/regist',
       data: {src: $('#picture').attr('src')},
       success: function(msg){
         // TODO 送信成功時の処理
