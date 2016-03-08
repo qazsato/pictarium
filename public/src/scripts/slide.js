@@ -13,7 +13,7 @@ $(function () {
       error: function (e) {
       }
     });
-  }, 10000);
+  }, 60000);
 
   // 画像データ表示
   setInterval(function () {
