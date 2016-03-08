@@ -63,7 +63,11 @@ var resizeImage = function (image, orientation, scale) {
     canvas.height = height;
   }
   var context = canvas.getContext('2d');
-  if (orientation === 6) {
+  if (orientation === 3) {
+    // 時計回りに180度回転
+    context.translate(width, height);
+    context.rotate(180 * Math.PI / 180);
+  } else if (orientation === 6) {
     // 時計回りに90度回転
     context.rotate(90 * Math.PI / 180);
     context.translate(0, -1 * height);
