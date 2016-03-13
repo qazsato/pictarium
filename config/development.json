@@ -1,3 +1,3 @@
 {
-  "dev_key": "dev_value"
+  "mongo_uri": "mongodb://localhost/pictarium_db"
 }
