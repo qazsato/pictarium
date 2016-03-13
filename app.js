@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public/dist'), {maxAge: 86400000 * 
 // define routes
 app.use('/', require('./routes/top'));
 app.use('/slide', require('./routes/slide'));
+app.use('/list', require('./routes/list'));
 app.use('/picture', require('./routes/picture'));
 
 // error handlers
