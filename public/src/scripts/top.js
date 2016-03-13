@@ -26,12 +26,15 @@ $(function () {
       url: '/picture/regist',
       data: {src: $('#picture').attr('src')},
       success: function(msg){
-        // TODO 送信成功時の処理
+        // 送信成功時の処理
         hideLoading();
-        showThanksView();
+        $('#picture').animation('fadeOutUp', null, function () {
+          $('#picture').attr('src', '');  // キャッシュ対策のためクリア
+          showThanksView();
+        });
       },
       error: function (e) {
-        // TODO 送信失敗時の処理
+        // 送信失敗時の処理
         hideLoading();
       }
     });

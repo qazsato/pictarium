@@ -1,6 +1,7 @@
 extends layout
 
 block style
+  link(rel='stylesheet', href='/components/jquery.animation/jquery.animation.css')
   link(rel='stylesheet', href='/styles/top.css')
 
 block content
@@ -25,5 +26,6 @@ block content
       input#image-file(type='file', accept='image/*')
 
 block script
+  script(type='text/javascript', src='/components/jquery.animation/jquery.animation.js')
   script(type='text/javascript', src='/components/exif/exif.js')
   script(type='text/javascript', src='/scripts/top.js')
