@@ -9,3 +9,10 @@ provider:
 functions:
   hello:
     handler: handler.hello
+
+resources:
+  Resources:
+    S3BucketPhotos:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: pictarium-photos
