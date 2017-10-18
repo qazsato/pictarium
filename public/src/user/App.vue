@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import EXIF from 'exif-js';
+
 export default {
   name: 'app'
 }
