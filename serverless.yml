@@ -9,6 +9,13 @@ provider:
 functions:
   hello:
     handler: handler.hello
+  user:
+    handler: handler.user
+    timeout: 300
+    events:
+      - http:
+          path: user
+          method: get
 
 resources:
   Resources:
