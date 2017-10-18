@@ -3,8 +3,24 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
+    "dev": "webpack --watch",
     "deploy": "npm run deploy:sls && npm run deploy:s3",
     "deploy:sls": "sls deploy",
     "deploy:s3": "aws s3 sync public/src s3://pictarium-storage"
+  },
+  "dependencies": {
+    "axios": "0.16.2",
+    "babel-polyfill": "6.26.0",
+    "element-ui": "1.4.7",
+    "vue": "2.5.2"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.2",
+    "babel-preset-es2015": "6.24.1",
+    "file-loader": "1.1.5",
+    "vue-loader": "13.3.0",
+    "vue-template-compiler": "2.5.2",
+    "webpack": "3.8.1"
   }
 }
