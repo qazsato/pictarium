@@ -6,7 +6,8 @@
     "dev": "webpack --watch",
     "deploy": "npm run deploy:sls && npm run deploy:s3",
     "deploy:sls": "sls deploy",
-    "deploy:s3": "aws s3 sync public/src s3://pictarium-storage"
+    "predeploy:s3": "webpack",
+    "deploy:s3": "aws s3 sync public/dist s3://pictarium-storage"
   },
   "dependencies": {
     "axios": "0.16.2",
