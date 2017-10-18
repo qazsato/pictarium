@@ -16,3 +16,17 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: pictarium-photos
+        CorsConfiguration:
+          CorsRules:
+            -
+              AllowedHeaders:
+                - "*"
+              AllowedMethods:
+                - POST
+                - GET
+                - PUT
+                - DELETE
+                - HEAD
+              AllowedOrigins:
+                - "*"
+
