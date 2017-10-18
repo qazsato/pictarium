@@ -18,8 +18,7 @@ resources:
         BucketName: pictarium-photos
         CorsConfiguration:
           CorsRules:
-            -
-              AllowedHeaders:
+            - AllowedHeaders:
                 - "*"
               AllowedMethods:
                 - POST
