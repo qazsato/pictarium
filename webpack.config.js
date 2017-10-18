@@ -3,8 +3,8 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    'user/app': ['babel-polyfill', './public/src/user/app.js'],
-    'projector/app': ['babel-polyfill', './public/src/projector/app.js']
+    'user/main': ['babel-polyfill', './public/src/user/main.js'],
+    'projector/main': ['babel-polyfill', './public/src/projector/main.js']
   },
   output: {
     path: path.resolve(__dirname, './public/dist'),
