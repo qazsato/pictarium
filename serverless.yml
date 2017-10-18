@@ -7,8 +7,6 @@ provider:
   region: ap-northeast-1
 
 functions:
-  hello:
-    handler: handler.hello
   user:
     handler: handler.user
     timeout: 300
