@@ -3,6 +3,8 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "deploy": "sls deploy"
+    "deploy": "npm run deploy:sls && npm run deploy:s3",
+    "deploy:sls": "sls deploy",
+    "deploy:s3": "aws s3 sync public/src s3://pictarium-storage"
   }
 }
