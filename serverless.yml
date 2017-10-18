@@ -17,10 +17,14 @@ functions:
 
 resources:
   Resources:
+    S3BucketStorage:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: pictarium-storage
     S3BucketPhotos:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: pictarium-photos-test
+        BucketName: pictarium-photos
         CorsConfiguration:
           CorsRules:
             - AllowedHeaders:
