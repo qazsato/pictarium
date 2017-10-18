@@ -1,0 +1,8 @@
+{
+  "name": "pictarium",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "deploy": "sls deploy"
+  }
+}
