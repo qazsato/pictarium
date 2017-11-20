@@ -10,11 +10,11 @@
     "deploy:s3": "aws s3 sync public/dist s3://pictarium-storage"
   },
   "dependencies": {
-    "axios": "0.16.2",
+    "axios": "0.17.1",
     "babel-polyfill": "6.26.0",
-    "element-ui": "1.4.7",
+    "element-ui": "2.0.5",
     "exif-js": "2.3.0",
-    "vue": "2.5.2"
+    "vue": "2.5.6"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
@@ -23,8 +23,8 @@
     "css-loader": "0.28.7",
     "file-loader": "1.1.5",
     "style-loader": "0.19.0",
-    "vue-loader": "13.3.0",
-    "vue-template-compiler": "2.5.2",
+    "vue-loader": "13.5.0",
+    "vue-template-compiler": "2.5.6",
     "webpack": "3.8.1"
   }
 }
