@@ -9,7 +9,7 @@ provider:
 functions:
   user:
     handler: handler.user
-    timeout: 300
+    timeout: 30
     events:
       - http:
           path: user
