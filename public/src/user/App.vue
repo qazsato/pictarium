@@ -1,32 +1,31 @@
 <template>
   <div id="app">
-    <div id="intro-area">
-      <h3>Please your photo.</h3><i class="material-icons">insert_photo</i>
-    </div>
-    <div id="picture-area" class="none">
-      <div class="picture-background"><img id="picture" width="80%"/></div>
-      <div class="spinner">
-        <div class="mdl-spinner mdl-js-spinner is-active"></div>
-      </div>
-      <el-button type="primary">送信</el-button>
-      <el-button>キャンセル</el-button>
-    </div>
-    <div id="thanks-area" class="none">
-      <h3>Thank you so much.</h3><i class="material-icons">favorite</i>
-    </div>
-    <div id="camera-area">
-      <button id="camera-btn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">photo_camera</i>
-        <input id="image-file" type="file" accept="image/*"/>
-      </button>
-    </div>
+    <img v-show="uploadedImage" :src="uploadedImage"/>
+    <input type="file" @change="onFileChange">
   </div>
 </template>
 
 <script>
-import EXIF from 'exif-js';
-
 export default {
-  name: 'app'
+  name: 'app',
+  data() {
+    return {
+      uploadedImage: '',
+    };
+  },
+  methods: {
+    onFileChange(e) {
+      const files = e.target.files || e.dataTransfer.files;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.uploadedImage = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+  },
 }
 </script>
 
