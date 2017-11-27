@@ -1,7 +1,10 @@
 <template>
   <div id="app" v-loading="loading">
     <img v-show="uploadedImage" :src="uploadedImage"/>
-    <input type="file" @change="onFileChange">
+    <el-button id="camera-button" type="primary">
+      <span>カメラ</span>
+      <input type="file" @change="onFileChange">
+    </el-button>
     <el-button @click="submitPhoto">送信</el-button>
   </div>
 </template>
@@ -69,5 +72,19 @@ export default {
 <style lang="postcss" scoped>
   #app {
     height: 100%;
+  }
+
+  #camera-button {
+    position: relative;
+  }
+
+  #camera-button input[type=file] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 100%;
+    width:  100%;
+    opacity: 0;
   }
 </style>
