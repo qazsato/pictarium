@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" v-loading="loading">
     <img v-show="uploadedImage" :src="uploadedImage"/>
     <input type="file" @change="onFileChange">
-    <button @click="submitPhoto">送信</button>
+    <el-button @click="submitPhoto">送信</el-button>
   </div>
 </template>
 
@@ -25,6 +25,7 @@ export default {
   name: 'app',
   data() {
     return {
+      loading: false,
       uploadedImage: '',
     };
   },
@@ -41,11 +42,13 @@ export default {
       reader.readAsDataURL(file);
     },
     submitPhoto() {
+      this.loading = true;
       s3.upload({
         Key: this.file.name,
         Body: this.file,
         ACL: 'public-read'
       }, (err, data) => {
+        this.loading = false;
         if (err) {
           return alert('There was an error uploading your photo: ', err.message);
         }
@@ -56,8 +59,15 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="postcss">
+  html,
+  body {
+    height: 100%;
+  }
 </style>
 
-
+<style lang="postcss" scoped>
+  #app {
+    height: 100%;
+  }
+</style>
