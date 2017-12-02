@@ -17,7 +17,10 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          postcss: [require('autoprefixer')()]
+          loaders: {
+            'postcss': 'style-loader!postcss-loader'
+          },
+          cssSourceMap: false
         }
       },
       {
