@@ -79,10 +79,14 @@ export default {
 </script>
 
 <style lang="postcss">
-  html,
-  body {
-    margin: 0;
+  html {
     height: 100%;
+  }
+
+  body {
+    height: 100%;
+    margin: 0;
+    font-family: Avenir, "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Meiryo UI", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   }
 
   .slide-in-up,
@@ -148,11 +152,13 @@ export default {
   }
 
   .thumbnail {
-    width: 100%;
-    margin-bottom: 15px;
+    display: block;
+    width: 80%;
+    margin: 0 auto;
   }
 
   .button-container {
+    margin: 20px 0;
     text-align: center;
   }
 
