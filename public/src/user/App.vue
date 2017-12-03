@@ -11,7 +11,7 @@
           <el-button class="cancel-button" @click="cancelPhoto">キャンセル</el-button>
         </div>
       </section>
-      <el-button id="camera-button">
+      <el-button id="camera-button" :class="{'slide-in-up':isCameraButtonShow === true, 'slide-in-down':isCameraButtonShow === false}">
         <div class="camera-text">撮影する</div>
         <i class="camera-icon material-icons">photo_camera</i>
         <input type="file" @change="onFileChange">
@@ -40,12 +40,14 @@ export default {
     return {
       loading: false,
       uploadedImage: null,
+      isCameraButtonShow: true
     };
   },
   methods: {
     onFileChange(e) {
       this.file = e.target.files[0] || e.dataTransfer.files[0];
       this.createImage(this.file);
+      this.isCameraButtonShow = false;
     },
     createImage(file) {
       const reader = new FileReader();
@@ -70,6 +72,7 @@ export default {
     },
     cancelPhoto() {
       this.uploadedImage = null;
+      this.isCameraButtonShow = true;
     }
   }
 }
@@ -80,6 +83,44 @@ export default {
   body {
     margin: 0;
     height: 100%;
+  }
+
+  .slide-in-up,
+  .slide-in-down {
+    animation-duration: .3s;
+    animation-fill-mode: both;
+  }
+
+  @keyframes slide-in-up {
+    from {
+      transform: translate3d(0, 100%, 0);
+      visibility: visible;
+    }
+
+    to {
+      transform: translate3d(0, 0, 0);
+      visibility: visible;
+    }
+  }
+
+  .slide-in-up {
+    animation-name: "slide-in-up";
+  }
+
+  @keyframes slide-in-down {
+    from {
+      transform: translate3d(0, 0, 0);
+      visibility: visible;
+    }
+
+    to {
+      transform: translate3d(0, 100%, 0);
+      visibility: hidden;
+    }
+  }
+
+  .slide-in-down {
+    animation-name: "slide-in-down";
   }
 </style>
 
