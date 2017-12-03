@@ -91,6 +91,7 @@ export default {
     height: 100%;
     margin: 0;
     font-family: Avenir, "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Meiryo UI", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    background-color: #f9f7f7;
   }
 
   .el-loading-spinner .path {
@@ -147,6 +148,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #fff;
   }
 
   main {
@@ -177,7 +179,7 @@ export default {
   }
 
   .cancel-button {
-    color: #2E2E2E;
+    color: #c0bebe;
     border: 1px solid #c0bebe;
     background-color: #fff;
   }
