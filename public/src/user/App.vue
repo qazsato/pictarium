@@ -48,6 +48,7 @@ export default {
       this.file = e.target.files[0] || e.dataTransfer.files[0];
       this.createImage(this.file);
       this.isCameraButtonShow = false;
+      e.target.value = '';  // NOTE 同一ファイルの選択イベント発火を検知できるよう初期状態にする。
     },
     createImage(file) {
       const reader = new FileReader();
