@@ -1,9 +1,9 @@
 <template>
-  <div id="app" v-loading="loading">
+  <div id="app">
     <header>
       <h1>pictarium</h1>
     </header>
-    <main>
+    <main v-loading="loading">
       <section v-show="uploadedImage">
         <img class="thumbnail" :src="uploadedImage"/>
         <div class="button-container">
@@ -64,10 +64,8 @@ export default {
         ACL: 'public-read'
       }, (err, data) => {
         this.loading = false;
-        if (err) {
-          return alert('There was an error uploading your photo: ', err.message);
-        }
-        alert('Successfully uploaded photo.');
+        this.uploadedImage = null;
+        this.isCameraButtonShow = true;
       });
     },
     cancelPhoto() {
@@ -87,6 +85,10 @@ export default {
     height: 100%;
     margin: 0;
     font-family: Avenir, "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Meiryo UI", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  }
+
+  .el-loading-spinner .path {
+    stroke: #ff5555;
   }
 
   .slide-in-up,
