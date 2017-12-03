@@ -1,11 +1,22 @@
 <template>
   <div id="app" v-loading="loading">
-    <img v-show="uploadedImage" :src="uploadedImage"/>
-    <el-button id="camera-button" type="primary">
-      <span>カメラ</span>
-      <input type="file" @change="onFileChange">
-    </el-button>
-    <el-button @click="submitPhoto">送信</el-button>
+    <header>
+      <h1>pictarium</h1>
+    </header>
+    <main>
+      <section v-show="uploadedImage">
+        <img class="thumbnail" :src="uploadedImage"/>
+        <div class="button-container">
+          <el-button class="submit-button" @click="submitPhoto">写真を送る</el-button>
+          <el-button class="cancel-button" @click="cancelPhoto">キャンセル</el-button>
+        </div>
+      </section>
+      <el-button id="camera-button">
+        <div class="camera-text">撮影する</div>
+        <i class="camera-icon material-icons">photo_camera</i>
+        <input type="file" @change="onFileChange">
+      </el-button>
+    </main>
   </div>
 </template>
 
@@ -28,7 +39,7 @@ export default {
   data() {
     return {
       loading: false,
-      uploadedImage: '',
+      uploadedImage: null,
     };
   },
   methods: {
@@ -56,6 +67,9 @@ export default {
         }
         alert('Successfully uploaded photo.');
       });
+    },
+    cancelPhoto() {
+      this.uploadedImage = null;
     }
   }
 }
@@ -64,6 +78,7 @@ export default {
 <style lang="postcss">
   html,
   body {
+    margin: 0;
     height: 100%;
   }
 </style>
@@ -73,8 +88,69 @@ export default {
     height: 100%;
   }
 
+  header {
+    height: 60px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  main {
+    margin: 20px;
+  }
+
+  h1 {
+    margin: 0;
+    color: #4c4c4c;
+    font-size: 24px;
+  }
+
+  .thumbnail {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .button-container {
+    text-align: center;
+  }
+
+  .submit-button {
+    color: #ff5555;
+    border: 1px solid #ff5555;
+    background-color: #fff;
+  }
+
+  .cancel-button {
+    color: #2E2E2E;
+    border: 1px solid #c0bebe;
+    background-color: #fff;
+  }
+
   #camera-button {
-    position: relative;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    height: 80px;
+    width: 80px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #ff5555;
+  }
+
+  #camera-button:hover {
+    background-color: #ff2222;
+  }
+
+  .camera-text {
+    margin: 10px 0 5px 0;
+    font-size: 13px;
+  }
+
+  .camera-icon {
+    font-size: 30px;
   }
 
   #camera-button input[type=file] {
