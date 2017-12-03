@@ -93,7 +93,7 @@ export default {
 
   .slide-in-up,
   .slide-in-down {
-    animation-duration: .3s;
+    animation-duration: .2s;
     animation-fill-mode: both;
   }
 
@@ -187,6 +187,7 @@ export default {
     border-radius: 50%;
     color: #fff;
     background-color: #ff5555;
+    box-shadow: 0px 0px 26px -8px rgba(0, 0, 0, 0.7);
   }
 
   #camera-button:hover {
