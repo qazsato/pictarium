@@ -11,7 +11,6 @@
 
 <script>
 import AWS from 'aws-sdk';
-import EXIF from 'exif-js';
 const ALBUM_BUCKET_NAME = 'pictarium-photos';
 AWS.config.update({
   region: 'ap-northeast-1',

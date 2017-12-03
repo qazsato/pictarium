@@ -14,7 +14,6 @@
     "axios": "0.17.1",
     "babel-polyfill": "6.26.0",
     "element-ui": "2.0.5",
-    "exif-js": "2.3.0",
     "vue": "2.5.8"
   },
   "devDependencies": {
