@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" v-loading="loading">
     <header>
       <h1>pictarium</h1>
     </header>
-    <main v-loading="loading">
+    <main>
       <section v-show="uploadedImage">
         <img class="thumbnail" :src="uploadedImage"/>
         <div class="button-container">
@@ -98,6 +98,10 @@ export default {
     stroke: #ff5555;
   }
 
+  .el-message {
+    top: 60px;
+  }
+
   .slide-in-up,
   .slide-in-down {
     animation-duration: .2s;
@@ -173,9 +177,9 @@ export default {
   }
 
   .submit-button {
-    color: #ff5555;
+    color: #fff;
     border: 1px solid #ff5555;
-    background-color: #fff;
+    background-color: #ff5555;
   }
 
   .cancel-button {
@@ -203,12 +207,12 @@ export default {
   }
 
   .camera-text {
-    margin: 10px 0 5px 0;
+    margin: 12px 0 2px 0;
     font-size: 13px;
   }
 
   .camera-icon {
-    font-size: 30px;
+    font-size: 32px;
   }
 
   #camera-button input[type=file] {
