@@ -175,7 +175,7 @@ export default {
   }
 
   #camera-button {
-    position: absolute;
+    position: fixed;
     bottom: 8px;
     right: 8px;
     height: 80px;
