@@ -6,7 +6,9 @@
     <main>
       <ul>
         <li v-for="photo in photos" :key="photo">
-          <img :src="photo" alt="">
+          <a :href="photo">
+            <img :src="photo" alt="">
+          </a>
         </li>
       </ul>
     </main>
