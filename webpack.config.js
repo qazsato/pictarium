@@ -4,6 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
     'user/main': ['babel-polyfill', './public/src/user/main.js'],
+    'list/main': ['babel-polyfill', './public/src/list/main.js'],
     'projector/main': ['babel-polyfill', './public/src/projector/main.js']
   },
   output: {
