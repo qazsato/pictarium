@@ -60,7 +60,7 @@ export default {
     submitPhoto() {
       this.loading = true;
       s3.upload({
-        Key: this.file.name,
+        Key: `${Date.now()}${this.file.name}`,
         Body: this.file,
         ACL: 'public-read'
       }, (err, data) => {
