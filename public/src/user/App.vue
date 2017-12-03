@@ -64,6 +64,11 @@ export default {
         Body: this.file,
         ACL: 'public-read'
       }, (err, data) => {
+        if (err) {
+          this.$message({message: '写真のアップロードに失敗しました。', type: 'error'});
+        } else {
+          this.$message({message: '写真をアップロードしました。', type: 'success'});
+        }
         this.loading = false;
         this.uploadedImage = null;
         this.isCameraButtonShow = true;
