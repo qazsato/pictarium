@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <header>
-      <h1>pictarium</h1>
-    </header>
+    <pic-header></pic-header>
     <main>
       <ul>
         <li v-for="photo in photos" :key="photo">
@@ -16,6 +14,7 @@
 </template>
 
 <script>
+import PicHeader from '../components/Header.vue';
 import AWS from 'aws-sdk';
 const ALBUM_BUCKET_NAME = 'pictarium-photos';
 AWS.config.update({
@@ -31,6 +30,9 @@ const s3 = new AWS.S3({
 
 export default {
   name: 'app',
+  components: {
+    PicHeader
+  },
   data() {
     return {
       photos: []
@@ -66,21 +68,6 @@ export default {
 </style>
 
 <style lang="postcss" scoped>
-  header {
-    height: 60px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-  }
-
-  h1 {
-    margin: 0;
-    color: #4c4c4c;
-    font-size: 24px;
-  }
-
   main {
     margin: 2px 0;
   }

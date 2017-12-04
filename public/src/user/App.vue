@@ -1,8 +1,6 @@
 <template>
   <div id="app" v-loading="loading">
-    <header>
-      <h1>pictarium</h1>
-    </header>
+    <pic-header></pic-header>
     <main>
       <section v-show="uploadedImage">
         <img class="thumbnail" :src="uploadedImage"/>
@@ -21,6 +19,7 @@
 </template>
 
 <script>
+import PicHeader from '../components/Header.vue';
 import AWS from 'aws-sdk';
 const ALBUM_BUCKET_NAME = 'pictarium-photos';
 AWS.config.update({
@@ -36,6 +35,9 @@ const s3 = new AWS.S3({
 
 export default {
   name: 'app',
+  components: {
+    PicHeader
+  },
   data() {
     return {
       loading: false,
@@ -146,23 +148,8 @@ export default {
     height: 100%;
   }
 
-  header {
-    height: 60px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-  }
-
   main {
     margin: 20px;
-  }
-
-  h1 {
-    margin: 0;
-    color: #4c4c4c;
-    font-size: 24px;
   }
 
   .thumbnail {
