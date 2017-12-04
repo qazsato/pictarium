@@ -2,11 +2,11 @@
 
 写真共有サービス
 
-## AWSのGUIから設定したもの
+## AWSのGUIから設定したもの
 
 - Coginito pool idの取得
 
-- S3のBucketPolycyの設定変更(pictarium-storage)
+- S3のBucketPolycyの設定変更
 
 ```
 {
