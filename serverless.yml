@@ -21,6 +21,13 @@ functions:
       - http:
           path: list
           method: get
+  projector:
+    handler: handler.projector
+    timeout: 30
+    events:
+      - http:
+          path: projector
+          method: get
 
 resources:
   Resources:
