@@ -1,5 +1,5 @@
 <template>
-  <div v-loading="loading">
+  <div class="loading-area" v-loading="loading">
     <pic-header></pic-header>
     <main>
       <section v-show="uploadedImage">
@@ -20,7 +20,7 @@
 
 <script>
 import PicHeader from './Header.vue';
-import Photo from '../Photo';
+import Photo from '../utils/Photo';
 const photo = new Photo();
 
 export default {
@@ -137,6 +137,11 @@ export default {
 </style>
 
 <style lang="postcss" scoped>
+  .loading-area {
+    width: 100%;
+    height: 100%;
+  }
+
   main {
     margin: 20px;
   }

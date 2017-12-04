@@ -10,7 +10,7 @@
 
 <script>
 import PicHeader from './Header.vue';
-import Photo from '../Photo';
+import Photo from '../utils/Photo';
 const photo = new Photo();
 
 export default {
