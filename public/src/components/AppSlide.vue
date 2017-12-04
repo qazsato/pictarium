@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import PicHeader from './Header.vue';
 import Photo from '../Photo';
 const photo = new Photo();
 
@@ -39,16 +40,16 @@ export default {
     background-color: #f9f7f7;
   }
 
+  #app {
+    height: 100%;
+  }
+
   .el-carousel__container {
     height: 100%;
   }
 </style>
 
 <style lang="postcss" scoped>
-  #app {
-    height: 100%;
-  }
-
   .el-carousel {
     height: 100%;
   }

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import PicHeader from '../components/Header.vue';
+import PicHeader from './Header.vue';
 import Photo from '../Photo';
 const photo = new Photo();
 
@@ -44,6 +44,10 @@ export default {
     margin: 0;
     font-family: Avenir, "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Meiryo UI", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
     background-color: #f9f7f7;
+  }
+
+  #app {
+    height: 100%;
   }
 </style>
 

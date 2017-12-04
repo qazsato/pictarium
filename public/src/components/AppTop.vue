@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import PicHeader from '../components/Header.vue';
+import PicHeader from './Header.vue';
 import Photo from '../Photo';
 const photo = new Photo();
 
@@ -85,6 +85,10 @@ export default {
     background-color: #f9f7f7;
   }
 
+  #app {
+    height: 100%;
+  }
+
   .el-loading-spinner .path {
     stroke: #ff5555;
   }
@@ -133,10 +137,6 @@ export default {
 </style>
 
 <style lang="postcss" scoped>
-  #app {
-    height: 100%;
-  }
-
   main {
     margin: 20px;
   }
