@@ -20,18 +20,8 @@
 
 <script>
 import PicHeader from '../components/Header.vue';
-import AWS from 'aws-sdk';
-const ALBUM_BUCKET_NAME = 'pictarium-photos';
-AWS.config.update({
-  region: 'ap-northeast-1',
-  credentials: new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'ap-northeast-1:e961eef1-1852-4238-968f-322ce60b3c90'
-  })
-});
-const s3 = new AWS.S3({
-  apiVersion: '2006-03-01',
-  params: {Bucket: ALBUM_BUCKET_NAME}
-});
+import Photo from '../Photo';
+const photo = new Photo();
 
 export default {
   name: 'app',
@@ -61,20 +51,19 @@ export default {
     },
     submitPhoto() {
       this.loading = true;
-      s3.upload({
-        Key: `${Date.now()}${this.file.name}`,
-        Body: this.file,
-        ACL: 'public-read'
-      }, (err, data) => {
-        if (err) {
-          this.$message({message: '写真のアップロードに失敗しました。', type: 'error'});
-        } else {
-          this.$message({message: '写真をアップロードしました。', type: 'success'});
-        }
-        this.loading = false;
-        this.uploadedImage = null;
-        this.isCameraButtonShow = true;
-      });
+      photo.upload(this.file)
+          .then(() => {
+            this.$message({message: '写真をアップロードしました。', type: 'success'});
+            this.loading = false;
+            this.uploadedImage = null;
+            this.isCameraButtonShow = true;
+          })
+          .catch((e) => {
+            this.$message({message: '写真のアップロードに失敗しました。', type: 'error'});
+            this.loading = false;
+            this.uploadedImage = null;
+            this.isCameraButtonShow = true;
+          });
     },
     cancelPhoto() {
       this.uploadedImage = null;

@@ -11,18 +11,8 @@
 </template>
 
 <script>
-import AWS from 'aws-sdk';
-const ALBUM_BUCKET_NAME = 'pictarium-photos';
-AWS.config.update({
-  region: 'ap-northeast-1',
-  credentials: new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'ap-northeast-1:e961eef1-1852-4238-968f-322ce60b3c90'
-  })
-});
-const s3 = new AWS.S3({
-  apiVersion: '2006-03-01',
-  params: {Bucket: ALBUM_BUCKET_NAME}
-});
+import Photo from '../Photo';
+const photo = new Photo();
 
 export default {
   name: 'app',
@@ -32,22 +22,7 @@ export default {
     };
   },
   mounted() {
-    const self = this;
-    const albumPhotosKey = '';
-    s3.listObjects({Prefix: albumPhotosKey}, function(err, data) {
-      if (err) {
-        return alert('There was an error viewing your album: ' + err.message);
-      }
-      const href = this.request.httpRequest.endpoint.href;
-      const bucketUrl = href + ALBUM_BUCKET_NAME + '/';
-      data.Contents.map((photo) => {
-        if (photo.Size > 0) {
-          const photoKey = photo.Key;
-          const photoUrl = bucketUrl + encodeURIComponent(photoKey);
-          self.photos.push(photoUrl);
-        }
-      });
-    });
+    photo.get().then((urls) => this.photos = urls);
   }
 }
 </script>
