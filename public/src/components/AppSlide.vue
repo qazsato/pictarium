@@ -1,13 +1,11 @@
 <template>
-  <div id="app">
-    <el-carousel trigger="click">
-      <el-carousel-item v-for="photo in photos" :key="photo">
-        <div class="photo-area">
-          <img :src="photo" alt="">
-        </div>
-      </el-carousel-item>
-    </el-carousel>
-  </div>
+  <el-carousel trigger="click">
+    <el-carousel-item v-for="photo in photos" :key="photo">
+      <div class="photo-area">
+        <img :src="photo" alt="">
+      </div>
+    </el-carousel-item>
+  </el-carousel>
 </template>
 
 <script>

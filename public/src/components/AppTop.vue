@@ -1,5 +1,5 @@
 <template>
-  <div id="app" v-loading="loading">
+  <div v-loading="loading">
     <pic-header></pic-header>
     <main>
       <section v-show="uploadedImage">
