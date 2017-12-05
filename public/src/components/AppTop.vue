@@ -1,13 +1,17 @@
 <template>
-  <div class="loading-area" v-loading="loading">
+  <div class="screen" v-loading="loading">
     <pic-header></pic-header>
     <main>
-      <section v-show="uploadedImage">
+      <section v-if="uploadedImage" class="photo-area">
         <img class="thumbnail" :src="uploadedImage"/>
         <div class="button-container">
           <el-button class="submit-button" @click="submitPhoto">写真を送る</el-button>
           <el-button class="cancel-button" @click="cancelPhoto">キャンセル</el-button>
         </div>
+      </section>
+      <section v-else class="intro-area">
+        <h2>Title</h2>
+        <p>text text text text text</p>
       </section>
       <camera-button :onSelectImage="selectImage" :is-show="isCameraButtonShow"></camera-button>
     </main>
@@ -94,13 +98,17 @@ export default {
 </style>
 
 <style lang="postcss" scoped>
-  .loading-area {
+  .screen {
     width: 100%;
     height: 100%;
   }
 
   main {
     margin: 20px;
+  }
+
+  .intro-area {
+    text-align: center;
   }
 
   .thumbnail {
