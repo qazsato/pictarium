@@ -12,7 +12,7 @@ import AppSlide from './components/AppSlide.vue';
 const router = new VueRouter({
   routes: [
     { path: '/', component: AppTop },
-    { path: '/photos', component: AppPhoto },
+    { path: '/photo', component: AppPhoto },
     { path: '/slide', component: AppSlide }
   ]
 });
