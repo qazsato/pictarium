@@ -54,6 +54,7 @@ export default {
 <style lang="postcss" scoped>
   main {
     margin: 2px 0;
+    padding-top: 60px;
   }
 
   ul {

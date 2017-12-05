@@ -104,7 +104,7 @@ export default {
   }
 
   main {
-    margin: 20px;
+    padding-top: 60px;
   }
 
   .intro-area {
@@ -113,8 +113,8 @@ export default {
 
   .thumbnail {
     display: block;
-    width: 80%;
-    margin: 0 auto;
+    width: 70%;
+    margin: 20px auto;
   }
 
   .button-container {
