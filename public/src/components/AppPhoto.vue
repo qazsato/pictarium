@@ -77,4 +77,8 @@ export default {
     box-sizing: border-box;
     object-fit: cover;
   }
+
+  img:hover {
+    opacity: 0.8;
+  }
 </style>
