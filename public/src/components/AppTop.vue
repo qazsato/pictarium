@@ -108,6 +108,7 @@ export default {
   }
 
   .intro-area {
+    margin-top: 70px;
     text-align: center;
   }
 
