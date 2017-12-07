@@ -1,6 +1,6 @@
 <template>
   <div class="screen" v-loading="loading">
-    <pic-header right-icon="apps" :right-click="goPhoto"></pic-header>
+    <pic-header action-icon="apps" :action-click="clickAction"></pic-header>
     <main>
       <section v-if="uploadedImage" class="photo-area">
         <img class="thumbnail" :src="uploadedImage"/>
@@ -68,7 +68,7 @@ export default {
       this.uploadedImage = null;
       this.isCameraButtonShow = true;
     },
-    goPhoto() {
+    clickAction() {
       this.$router.push('photo');
     }
   }

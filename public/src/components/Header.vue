@@ -1,38 +1,33 @@
 <template>
   <header>
     <div class="menu">
-      <i @click="clickLeftIcon" class="material-icons">{{leftIcon}}</i>
+      <i v-show="isBackButtonShow" @click="clickBack" class="material-icons">chevron_left</i>
     </div>
     <h1>pictarium</h1>
     <div class="menu">
-      <i @click="clickRightIcon" class="material-icons">{{rightIcon}}</i>
+      <i @click="clickAction" class="material-icons">{{actionIcon}}</i>
     </div>
   </header>
 </template>
 
 <script>
 export default {
-  props: ['leftIcon', 'rightIcon', 'leftClick', 'rightClick'],
+  props: ['actionIcon', 'actionClick'],
   data() {
     return {
-      isBackButtonShow: false,
-      isPhotoButtonShow: false
+      isBackButtonShow: false
     };
   },
   mounted: function() {
     const path = this.$router.history.current.path;
-    if (path === '/') {
-      this.isPhotoButtonShow = true;
-    } else if (path === '/photo') {
-      this.isBackButtonShow = true;
-    }
+    this.isBackButtonShow = (path !== '/');
   },
   methods: {
-    clickLeftIcon() {
-      this.leftClick();
+    clickBack() {
+      this.$router.go(-1);
     },
-    clickRightIcon() {
-      this.rightClick();
+    clickAction() {
+      this.actionClick();
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="screen" v-loading="loading">
-    <pic-header left-icon="chevron_left" :left-click="back" right-icon="refresh" :right-click="reload"></pic-header>
+    <pic-header action-icon="refresh" :action-click="clickAction"></pic-header>
     <main>
       <ul>
         <li v-for="photo in photos" :key="photo">
@@ -47,7 +47,7 @@ export default {
     back() {
       this.$router.go(-1);
     },
-    reload() {
+    clickAction() {
       this.fetch();
     }
   }
