@@ -1,5 +1,5 @@
 <template>
-  <el-carousel trigger="click">
+  <el-carousel trigger="click" :interval="5000">
     <el-carousel-item v-for="photo in photos" :key="photo">
       <div class="photo-area">
         <img :src="photo" alt="">
@@ -17,11 +17,21 @@ export default {
   name: 'app',
   data() {
     return {
+      timer: null,
       photos: []
     };
   },
+  methods: {
+    fetch() {
+      photo.get().then((urls) => this.photos = urls);
+    }
+  },
   mounted() {
-    photo.get().then((urls) => this.photos = urls);
+    this.fetch();
+    this.timer = setInterval(this.fetch, 10000);
+  },
+  destroyed() {
+    clearInterval(this.timer);
   }
 }
 </script>
@@ -44,6 +54,10 @@ export default {
 
   .el-carousel__container {
     height: 100%;
+  }
+
+  .el-carousel__indicators {
+    display: none;
   }
 </style>
 
