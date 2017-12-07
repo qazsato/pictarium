@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="screen" v-loading="loading">
     <pic-header left-icon="chevron_left" :left-click="back" right-icon="refresh" :right-click="reload"></pic-header>
     <main>
       <ul>
@@ -25,6 +25,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       photos: []
     };
   },
@@ -33,10 +34,13 @@ export default {
   },
   methods: {
     fetch() {
+      this.loading = true;
       photo.get()
           .then((urls) => {
+            this.loading = false;
             this.photos = urls;
           }).catch((e) => {
+            this.loading = false;
             this.$message({message: '写真の取得に失敗しました。', type: 'error'});
           });
     },
@@ -51,7 +55,12 @@ export default {
 </script>
 
 <style lang="postcss">
+  html {
+    height: 100%;
+  }
+
   body {
+    height: 100%;
     margin: 0;
     font-family: Avenir, "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Meiryo UI", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
     background-color: #f9f7f7;
@@ -60,9 +69,18 @@ export default {
   #app {
     height: 100%;
   }
+
+  .el-loading-spinner .path {
+    stroke: #ff5555;
+  }
 </style>
 
 <style lang="postcss" scoped>
+  .screen {
+    width: 100%;
+    height: 100%;
+  }
+
   main {
     margin: 2px 0;
     padding-top: 60px;
