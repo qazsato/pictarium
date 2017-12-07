@@ -1,17 +1,18 @@
 <template>
   <header>
     <div class="menu">
-      <i v-show="isBackButtonShow" @click="goBack" class="material-icons">chevron_left</i>
+      <i @click="clickLeftIcon" class="material-icons">{{leftIcon}}</i>
     </div>
     <h1>pictarium</h1>
     <div class="menu">
-      <i v-show="isPhotoButtonShow" @click="goPhoto" class="material-icons">apps</i>
+      <i @click="clickRightIcon" class="material-icons">{{rightIcon}}</i>
     </div>
   </header>
 </template>
 
 <script>
 export default {
+  props: ['leftIcon', 'rightIcon', 'leftClick', 'rightClick'],
   data() {
     return {
       isBackButtonShow: false,
@@ -27,11 +28,11 @@ export default {
     }
   },
   methods: {
-    goBack() {
-      this.$router.go(-1);
+    clickLeftIcon() {
+      this.leftClick();
     },
-    goPhoto() {
-      this.$router.push('photo');
+    clickRightIcon() {
+      this.rightClick();
     }
   }
 }

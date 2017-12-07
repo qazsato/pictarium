@@ -1,6 +1,6 @@
 <template>
   <div>
-    <pic-header></pic-header>
+    <pic-header left-icon="chevron_left" :left-click="back" right-icon="refresh" :right-click="reload"></pic-header>
     <main>
       <ul>
         <li v-for="photo in photos" :key="photo">
@@ -29,12 +29,23 @@ export default {
     };
   },
   mounted() {
-    photo.get()
-        .then((urls) => {
-          this.photos = urls;
-        }).catch((e) => {
-          this.$message({message: '写真の取得に失敗しました。', type: 'error'});
-        });
+    this.fetch();
+  },
+  methods: {
+    fetch() {
+      photo.get()
+          .then((urls) => {
+            this.photos = urls;
+          }).catch((e) => {
+            this.$message({message: '写真の取得に失敗しました。', type: 'error'});
+          });
+    },
+    back() {
+      this.$router.go(-1);
+    },
+    reload() {
+      this.fetch();
+    }
   }
 }
 </script>
