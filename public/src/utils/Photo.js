@@ -47,6 +47,7 @@ class Photo {
             photoUrls.push(photoUrl);
           }
         });
+        photoUrls.reverse();  // 新しい順にソート
         resolve(photoUrls);
       });
     });
