@@ -44,7 +44,7 @@ module.exports = {
       }
     ]
   },
-  devtool: process.env.NODE_ENV !== 'production' ? 'eval' : false,
+  devtool: 'source-map',
   resolve: {
     extensions: ['.js'],
     alias: {
