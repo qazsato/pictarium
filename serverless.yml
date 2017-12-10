@@ -5,6 +5,11 @@ provider:
   runtime: nodejs6.10
   stage: v1
   region: ap-northeast-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "arn:aws:s3:::qazsato-serverless-s3-sample/*"
 
 functions:
   app:
@@ -14,6 +19,14 @@ functions:
       - http:
           path: /
           method: get
+  resize:
+    handler: handler.resize
+    events:
+      - s3:
+          bucket: qazsato-serverless-s3-sample
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: original/
 
 resources:
   Resources:
