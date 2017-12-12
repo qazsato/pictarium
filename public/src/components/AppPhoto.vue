@@ -4,9 +4,7 @@
     <main>
       <ul>
         <li v-for="photo in photos" :key="photo">
-          <a :href="photo">
-            <img :src="photo" alt="">
-          </a>
+          <img :src="photo" @click="clickPhoto(photo)" alt="">
         </li>
       </ul>
     </main>
@@ -35,7 +33,7 @@ export default {
   methods: {
     fetch() {
       this.loading = true;
-      photo.get()
+      photo.get('small')
           .then((urls) => {
             this.loading = false;
             this.photos = urls;
@@ -49,6 +47,9 @@ export default {
     },
     clickAction() {
       this.fetch();
+    },
+    clickPhoto(url) {
+      location.href = url.replace('/small/', '/original/');
     }
   }
 }
