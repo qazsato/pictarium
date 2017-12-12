@@ -22,7 +22,7 @@ class Photo {
         Key: `original/${Date.now()}${file.name}`,
         Body: file,
         ACL: 'public-read'
-      }, (err, data) => {
+      }, (err) => {
         if (err) {
           reject(err);
         } else {

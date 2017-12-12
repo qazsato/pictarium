@@ -37,7 +37,7 @@ export default {
           .then((urls) => {
             this.loading = false;
             this.photos = urls;
-          }).catch((e) => {
+          }).catch(() => {
             this.loading = false;
             this.$message({message: '写真の取得に失敗しました。', type: 'error'});
           });
