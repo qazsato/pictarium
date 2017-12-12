@@ -9,7 +9,7 @@ provider:
     - Effect: Allow
       Action:
         - s3:*
-      Resource: "arn:aws:s3:::qazsato-serverless-s3-sample/*"
+      Resource: "arn:aws:s3:::pictarium-photos/*"
 
 functions:
   app:
@@ -23,7 +23,7 @@ functions:
     handler: handler.resize
     events:
       - s3:
-          bucket: qazsato-serverless-s3-sample
+          bucket: pictarium-photos
           event: s3:ObjectCreated:*
           rules:
             - prefix: original/
@@ -34,19 +34,3 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: pictarium-storage
-    S3BucketPhotos:
-      Type: AWS::S3::Bucket
-      Properties:
-        BucketName: pictarium-photos
-        CorsConfiguration:
-          CorsRules:
-            - AllowedHeaders:
-                - "*"
-              AllowedMethods:
-                - POST
-                - GET
-                - PUT
-                - DELETE
-                - HEAD
-              AllowedOrigins:
-                - "*"
