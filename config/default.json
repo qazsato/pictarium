@@ -1,0 +1,10 @@
+{
+  "region": "ap-northeast-1",
+  "s3": {
+    "alubum_bucket": "pictarium-photos",
+    "storage_bucket": "pictarium-storage"
+  },
+  "cognito": {
+    "identify_pool_id": "ap-northeast-1:e961eef1-1852-4238-968f-322ce60b3c90"
+  }
+}

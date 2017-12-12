@@ -1,19 +1,17 @@
+const config = require('config');
 const AWS = require('aws-sdk');
-const REGION = 'ap-northeast-1';
-const ALBUM_BUCKET_NAME = 'pictarium-photos';
-const IDENTITY_POOL_ID = 'ap-northeast-1:e961eef1-1852-4238-968f-322ce60b3c90';
 
 class Photo {
   constructor() {
     AWS.config.update({
-      region: REGION,
+      region: config.region,
       credentials: new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: IDENTITY_POOL_ID
+        IdentityPoolId: config.cognit.identify_pool_id
       })
     });
     this.s3 = new AWS.S3({
       apiVersion: '2006-03-01',
-      params: {Bucket: ALBUM_BUCKET_NAME}
+      params: {Bucket: config.s3.alubum_bucket}
     });
   }
   upload(file) {
@@ -39,7 +37,7 @@ class Photo {
         }
         const photoUrls = [];
         const href = this.request.httpRequest.endpoint.href;
-        const bucketUrl = href + ALBUM_BUCKET_NAME + '/';
+        const bucketUrl = href + config.s3.alubum_bucket + '/';
         data.Contents.map((photo) => {
           if (photo.Size > 0) {
             const photoUrl = bucketUrl + photo.Key;
