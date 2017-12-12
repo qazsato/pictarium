@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import PicHeader from './Header.vue';
 import Photo from '../utils/Photo';
 const photo = new Photo();
 
