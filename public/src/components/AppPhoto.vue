@@ -106,6 +106,7 @@ export default {
     padding: 2px;
     box-sizing: border-box;
     object-fit: cover;
+    cursor: pointer;
   }
 
   img:hover {
