@@ -19,7 +19,7 @@ class Photo {
   upload(file) {
     return new Promise((resolve, reject) => {
       this.s3.upload({
-        Key: `${Date.now()}${file.name}`,
+        Key: `original/${Date.now()}${file.name}`,
         Body: file,
         ACL: 'public-read'
       }, (err, data) => {
@@ -42,8 +42,7 @@ class Photo {
         const bucketUrl = href + ALBUM_BUCKET_NAME + '/';
         data.Contents.map((photo) => {
           if (photo.Size > 0) {
-            const photoKey = photo.Key;
-            const photoUrl = bucketUrl + encodeURIComponent(photoKey);
+            const photoUrl = bucketUrl + photo.Key;
             photoUrls.push(photoUrl);
           }
         });
