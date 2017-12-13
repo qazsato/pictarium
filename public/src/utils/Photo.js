@@ -6,7 +6,7 @@ class Photo {
     AWS.config.update({
       region: config.region,
       credentials: new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: config.cognit.identify_pool_id
+        IdentityPoolId: config.cognito.identify_pool_id
       })
     });
     this.s3 = new AWS.S3({
