@@ -1,4 +1,4 @@
-const config = require('config');
+const config = require('../../../config/aws.json');
 const AWS = require('aws-sdk');
 
 class Photo {
