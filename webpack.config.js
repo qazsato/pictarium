@@ -8,7 +8,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './public/dist'),
-    publicPath: process.env.NODE_ENV === 'production' ? config.s3.storage_url: '../public/dist/',
+    publicPath: process.env.NODE_ENV === 'production' ? `${config.s3.storage_url}/`: '../public/dist/',
     filename: './[name].bundle.js'
   },
   module: {
