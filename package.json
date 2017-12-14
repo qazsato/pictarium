@@ -3,10 +3,10 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "webpack --watch",
+    "dev": "NODE_ENV=development webpack --watch",
     "deploy": "npm run deploy:sls && npm run deploy:s3",
     "deploy:sls": "sls deploy",
-    "predeploy:s3": "webpack",
+    "predeploy:s3": "NODE_ENV=production webpack",
     "deploy:s3": "aws s3 sync public/dist s3://pictarium-storage"
   },
   "dependencies": {

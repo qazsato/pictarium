@@ -1,3 +1,4 @@
+const config = require('./config/aws.json');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -7,7 +8,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './public/dist'),
-    publicPath: '/',
+    publicPath: process.env.NODE_ENV === 'production' ? config.s3.storage_url: '../public/dist/',
     filename: './[name].bundle.js'
   },
   module: {
