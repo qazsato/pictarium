@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     fetch() {
-      photo.get('original').then((urls) => this.photos = urls);
+      photo.get('large').then((urls) => this.photos = urls);
     }
   },
   mounted() {

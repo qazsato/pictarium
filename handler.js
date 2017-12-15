@@ -19,26 +19,25 @@ module.exports.app = (event, context, callback) => {
 
 module.exports.resize = (event, context, callback) => {
   const Bucket = event.Records[0].s3.bucket.name;
-  const srcKey = decodeURIComponent(event.Records[0].s3.object.key.replace(/\+/g, ' '));
-  const fileName = srcKey.split('/')[srcKey.split('/').length - 1];
-  const imageType = srcKey.match(/\.([^.]*)$/)[0];
-  const dstKey = `small/${fileName}`;
+  const Key = decodeURIComponent(event.Records[0].s3.object.key.replace(/\+/g, ' '));
+  const fileName = Key.split('/')[Key.split('/').length - 1];
+  const imageType = Key.match(/\.([^.]*)$/)[0];
   co(function *() {
-    const photo = yield s3.getObject({Bucket, Key: srcKey}).promise();
-    const resizedBuffer = yield resizePhoto(photo, imageType);
-    yield s3.putObject({Bucket, Key: dstKey, Body: resizedBuffer, ContentType: photo.ContentType}).promise();
+    const photo = yield s3.getObject({Bucket, Key}).promise();
+    const smallBuffer = yield resizePhoto(240, 240, photo, imageType);
+    const largeBuffer = yield resizePhoto(1000, 1000, photo, imageType);
+    yield s3.putObject({Bucket, Key: `small/${fileName}`, Body: smallBuffer, ContentType: photo.ContentType}).promise();
+    yield s3.putObject({Bucket, Key: `large/${fileName}`, Body: largeBuffer, ContentType: photo.ContentType}).promise();
     callback(null, 'success');
   })
   .catch((e) => callback(e));
 }
 
-function resizePhoto(data, imageType) {
-  const MAX_WIDTH  = 240;
-  const MAX_HEIGHT = 240;
+function resizePhoto(width, height, data, imageType) {
   return new Promise((resolve, reject) => {
     gm(data.Body)
       .autoOrient()
-      .resize(MAX_WIDTH, MAX_HEIGHT)
+      .resize(width, height)
       .toBuffer(imageType, (err, buffer) => {
         if (err) {
           reject(err);
