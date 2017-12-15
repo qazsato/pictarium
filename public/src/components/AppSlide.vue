@@ -72,12 +72,12 @@ export default {
 <style lang="postcss" scoped>
   .photo-area {
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
   }
 
   .photo-area img {
+    display: block;
+    margin: auto;
     width: 100%;
     height: 100%;
     object-fit: contain;
