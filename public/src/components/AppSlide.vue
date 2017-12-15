@@ -1,11 +1,9 @@
 <template>
-  <el-carousel trigger="click" :interval="5000">
-    <el-carousel-item v-for="photo in photos" :key="photo">
-      <div class="photo-area">
-        <img :src="photo" alt="">
-      </div>
-    </el-carousel-item>
-  </el-carousel>
+  <div class="photo-area">
+    <transition name="fade" v-for="(photo, index) in photos" :key="photo">
+      <img v-show="currentNumber == index" :src="photo" alt="">
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -16,21 +14,32 @@ export default {
   name: 'app',
   data() {
     return {
-      timer: null,
-      photos: []
+      slideTimer: null,
+      fetchTimer: null,
+      photos: [],
+      currentNumber: 0
     };
   },
   methods: {
     fetch() {
       photo.get('large').then((urls) => this.photos = urls);
+    },
+    slide() {
+      if (this.currentNumber >= this.photos.length - 1) {
+        this.currentNumber = 0;
+      } else {
+        this.currentNumber++;
+      }
     }
   },
   mounted() {
     this.fetch();
-    this.timer = setInterval(this.fetch, 10000);
+    this.slideTimer = setInterval(this.slide, 10000);
+    this.fetchTimer = setInterval(this.fetch, 10000);
   },
   destroyed() {
-    clearInterval(this.timer);
+    clearInterval(this.slideTimer);
+    clearInterval(this.fetchTimer);
   }
 }
 </script>
@@ -51,20 +60,16 @@ export default {
     height: 100%;
   }
 
-  .el-carousel__container {
-    height: 100%;
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
   }
 
-  .el-carousel__indicators {
-    display: none;
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0
   }
 </style>
 
 <style lang="postcss" scoped>
-  .el-carousel {
-    height: 100%;
-  }
-
   .photo-area {
     height: 100%;
     display: flex;
