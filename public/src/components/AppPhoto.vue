@@ -4,7 +4,7 @@
     <main>
       <ul>
         <li v-for="photo in photos" :key="photo">
-          <img :src="photo" @click="clickPhoto(photo)" alt="">
+          <img :data-src="photo" @click="clickPhoto(photo)" alt="" class="lazyload">
         </li>
       </ul>
     </main>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import lazysizes from 'lazysizes';
 import PicHeader from './Header.vue';
 import Photo from '../utils/Photo';
 const photo = new Photo();
