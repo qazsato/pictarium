@@ -18,7 +18,5 @@ const router = new VueRouter({
 });
 
 window.onload = function () {
-  const app = new Vue({
-    router
-  }).$mount('#app');
+  new Vue({router}).$mount('#app');
 };
