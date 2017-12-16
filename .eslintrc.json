@@ -9,6 +9,7 @@
     "sourceType": "module"
   },
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:vue/essential"
   ]
 }
