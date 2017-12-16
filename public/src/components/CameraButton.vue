@@ -2,7 +2,7 @@
   <el-button id="camera-button" :class="{'slide-in-up':isShow === true, 'slide-in-down':isShow === false}">
     <div class="camera-text">撮影する</div>
     <i class="camera-icon material-icons">photo_camera</i>
-    <input type="file" @change="onFileChange">
+    <input type="file" @change="onFileChange" accept="image/*">
   </el-button>
 </template>
 
