@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import lazysizes from 'lazysizes';
+import 'lazysizes';
 import PicHeader from './Header.vue';
 import Photo from '../scripts/Photo';
 const photo = new Photo();
