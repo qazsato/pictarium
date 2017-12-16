@@ -85,7 +85,9 @@ export default {
     display: inline-block;
     vertical-align: top;
     width: calc(100vw / 3);
+    max-width: 240px;
     height: calc(100vw / 3);
+    max-height: 240px;
   }
 
   img {

@@ -105,6 +105,7 @@ export default {
   .thumbnail {
     display: block;
     width: 70%;
+    max-width: 600px;
     margin: 20px auto;
   }
 
