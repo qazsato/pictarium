@@ -76,20 +76,7 @@ export default {
 </script>
 
 <style lang="postcss">
-  html {
-    height: 100%;
-  }
-
-  body {
-    height: 100%;
-    margin: 0;
-    font-family: Avenir, "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Meiryo UI", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-    background-color: #f9f7f7;
-  }
-
-  #app {
-    height: 100%;
-  }
+  @import '../styles/main.css';
 
   .el-loading-spinner .path {
     stroke: #ff5555;
