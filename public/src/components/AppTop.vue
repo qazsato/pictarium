@@ -21,7 +21,7 @@
 <script>
 import PicHeader from './Header.vue';
 import CameraButton from './CameraButton.vue';
-import Photo from '../utils/Photo';
+import Photo from '../scripts/Photo';
 const photo = new Photo();
 
 export default {

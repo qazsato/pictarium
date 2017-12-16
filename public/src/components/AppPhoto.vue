@@ -14,7 +14,7 @@
 <script>
 import lazysizes from 'lazysizes';
 import PicHeader from './Header.vue';
-import Photo from '../utils/Photo';
+import Photo from '../scripts/Photo';
 const photo = new Photo();
 
 export default {

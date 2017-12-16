@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Photo from '../utils/Photo';
+import Photo from '../scripts/Photo';
 const photo = new Photo();
 
 export default {
