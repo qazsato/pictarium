@@ -1,21 +1,9 @@
 'use strict';
 
-const fs = require('fs');
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 const co = require('co');
 const gm = require('gm').subClass({imageMagick: true});
-
-module.exports.app = (event, context, callback) => {
-  const html = fs.readFileSync('./views/index.html', 'utf-8')
-  callback(null, {
-    statusCode: 200,
-    headers: {
-      'content-type' : 'text/html'
-    },
-    body: html
-  });
-}
 
 module.exports.resize = (event, context, callback) => {
   const Bucket = event.Records[0].s3.bucket.name;

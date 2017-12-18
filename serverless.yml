@@ -12,13 +12,6 @@ provider:
       Resource: "arn:aws:s3:::${file(./config/aws.json):s3.alubum_bucket}/*"
 
 functions:
-  app:
-    handler: handler.app
-    timeout: 30
-    events:
-      - http:
-          path: /
-          method: get
   resize:
     handler: handler.resize
     events:
