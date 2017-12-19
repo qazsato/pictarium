@@ -1,14 +1,13 @@
-const config = require('./config/aws.json');
 const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    'main': ['babel-polyfill', './public/src/main.js']
+    'main': ['babel-polyfill', './static/src/main.js']
   },
   output: {
-    path: path.resolve(__dirname, './public/dist'),
-    publicPath: process.env.NODE_ENV === 'production' ? `${config.s3.storage_url}/`: '../public/dist/',
+    path: path.resolve(__dirname, './static/dist'),
+    publicPath: './dist/',
     filename: './[name].bundle.js'
   },
   module: {
