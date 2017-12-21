@@ -7,7 +7,8 @@
     "deploy": "npm run deploy:sls && npm run deploy:s3",
     "deploy:sls": "sls deploy",
     "predeploy:s3": "NODE_ENV=production webpack",
-    "deploy:s3": "aws s3 sync static/ s3://pictarium-storage"
+    "deploy:s3": "aws s3 sync static/ s3://pictarium-storage",
+    "start": "webpack-dev-server"
   },
   "dependencies": {
     "aws-sdk": "2.171.0",
@@ -33,6 +34,7 @@
     "style-loader": "0.19.1",
     "vue-loader": "13.6.0",
     "vue-template-compiler": "2.5.11",
-    "webpack": "3.10.0"
+    "webpack": "3.10.0",
+    "webpack-dev-server": "2.9.7"
   }
 }
