@@ -2,7 +2,7 @@
   <el-button id="camera-button" :class="{'slide-in-up':isShow === true, 'slide-in-down':isShow === false}">
     <div class="camera-text">撮影する</div>
     <i class="camera-icon material-icons">photo_camera</i>
-    <input type="file" @change="onFileChange" accept="image/*">
+    <input type="file" @change="onFileChange" accept="image/*" multiple>
   </el-button>
 </template>
 
@@ -11,8 +11,8 @@ export default {
   props: ['onSelectImage', 'isShow'],
   methods: {
     onFileChange(e) {
-      const file = e.target.files[0] || e.dataTransfer.files[0];
-      this.onSelectImage(file);
+      const files = e.target.files || e.dataTransfer.files;
+      this.onSelectImage(files);
       e.target.value = '';  // NOTE 同一ファイルの選択イベント発火を検知できるよう初期状態にする。
     }
   }

@@ -2,8 +2,8 @@
   <div class="screen" v-loading="loading">
     <pic-header action-icon="apps" :action-click="clickAction"></pic-header>
     <main>
-      <section v-if="uploadedImage" class="photo-area">
-        <img class="thumbnail" :src="uploadedImage"/>
+      <section v-if="uploadedImages.length > 0" class="photo-area">
+        <img v-for="images in uploadedImages" :key="images" :src="images" class="thumbnail"/>
         <div class="button-container">
           <el-button class="submit-button" @click="submitPhoto">写真を送る</el-button>
           <el-button class="cancel-button" @click="cancelPhoto">キャンセル</el-button>
@@ -33,39 +33,43 @@ export default {
   data() {
     return {
       loading: false,
-      file: null,
-      uploadedImage: null,
+      files: [],
+      uploadedImages: [],
       isCameraButtonShow: true
     };
   },
   methods: {
-    selectImage(file) {
-      this.file = file;
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (e) => {
-        this.uploadedImage = e.target.result;
-        this.isCameraButtonShow = false;
-      };
+    selectImage(files) {
+      for (const file of files) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (e) => this.uploadedImages.push(e.target.result);
+        this.files.push(file);
+      }
+      this.isCameraButtonShow = false;
     },
     submitPhoto() {
       this.loading = true;
-      photo.upload(this.file)
-          .then(() => {
-            this.$message({message: '写真をアップロードしました。', type: 'success'});
-            this.loading = false;
-            this.uploadedImage = null;
-            this.isCameraButtonShow = true;
-          })
-          .catch((e) => {
-            this.$message({message: '写真のアップロードに失敗しました。', type: 'error'});
-            this.loading = false;
-            this.uploadedImage = null;
-            this.isCameraButtonShow = true;
-          });
+      for (const file of this.files) {
+        photo.upload(file)
+            .then(() => {
+              this.$message({message: '写真をアップロードしました。', type: 'success'});
+              this.loading = false;
+              this.files = [];
+              this.uploadedImages = [];
+              this.isCameraButtonShow = true;
+            })
+            .catch((e) => {
+              this.$message({message: '写真のアップロードに失敗しました。', type: 'error'});
+              this.loading = false;
+              this.files = [];
+              this.uploadedImages = [];
+              this.isCameraButtonShow = true;
+            });
+      }
     },
     cancelPhoto() {
-      this.uploadedImage = null;
+      this.uploadedImages = [];
       this.isCameraButtonShow = true;
     },
     clickAction() {
