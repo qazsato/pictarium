@@ -50,23 +50,23 @@ export default {
     },
     submitPhoto() {
       this.loading = true;
-      for (const file of this.files) {
-        photo.upload(file)
-            .then(() => {
-              this.$message({message: '写真をアップロードしました。', type: 'success'});
-              this.loading = false;
-              this.files = [];
-              this.uploadedImages = [];
-              this.isCameraButtonShow = true;
-            })
-            .catch((e) => {
-              this.$message({message: '写真のアップロードに失敗しました。', type: 'error'});
-              this.loading = false;
-              this.files = [];
-              this.uploadedImages = [];
-              this.isCameraButtonShow = true;
-            });
-      }
+      const promises = this.files.map((file) => photo.upload(file));
+      Promise
+        .all(promises)
+        .then(() => {
+          this.$message({message: '写真をアップロードしました。', type: 'success'});
+          this.loading = false;
+          this.files = [];
+          this.uploadedImages = [];
+          this.isCameraButtonShow = true;
+        })
+        .catch(() => {
+          this.$message({message: '写真のアップロードに失敗しました。', type: 'error'});
+          this.loading = false;
+          this.files = [];
+          this.uploadedImages = [];
+          this.isCameraButtonShow = true;
+        });
     },
     cancelPhoto() {
       this.uploadedImages = [];
