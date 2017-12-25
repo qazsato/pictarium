@@ -55,25 +55,24 @@ export default {
         .all(promises)
         .then(() => {
           this.$message({message: '写真をアップロードしました。', type: 'success'});
-          this.loading = false;
-          this.files = [];
-          this.uploadedImages = [];
-          this.isCameraButtonShow = true;
+          this.initialize();
         })
         .catch(() => {
           this.$message({message: '写真のアップロードに失敗しました。', type: 'error'});
-          this.loading = false;
-          this.files = [];
-          this.uploadedImages = [];
-          this.isCameraButtonShow = true;
+          this.initialize();
         });
     },
     cancelPhoto() {
-      this.uploadedImages = [];
-      this.isCameraButtonShow = true;
+      this.initialize();
     },
     clickAction() {
       this.$router.push('photo');
+    },
+    initialize() {
+      this.loading = false;
+      this.files = [];
+      this.uploadedImages = [];
+      this.isCameraButtonShow = true;
     }
   }
 }
