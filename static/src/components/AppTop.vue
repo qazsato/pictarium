@@ -55,20 +55,20 @@ export default {
         .all(promises)
         .then(() => {
           this.$message({message: '写真をアップロードしました。', type: 'success'});
-          this.initialize();
+          this.resetData();
         })
         .catch(() => {
           this.$message({message: '写真のアップロードに失敗しました。', type: 'error'});
-          this.initialize();
+          this.resetData();
         });
     },
     cancelPhoto() {
-      this.initialize();
+      this.resetData();
     },
     clickAction() {
       this.$router.push('photo');
     },
-    initialize() {
+    resetData() {
       this.loading = false;
       this.files = [];
       this.uploadedImages = [];
