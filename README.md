@@ -1,6 +1,8 @@
 # pictarium
 
-写真共有サービス
+パーティ会場で使う写真共有サービス
+
+![キャプチャ](https://raw.githubusercontent.com/wiki/qazsato/pictarium/pictarium.png)
 
 ## AWSのGUIから設定したもの
 
@@ -22,3 +24,6 @@
     ]
 }
 ```
+
+## image 
+brew install imagemagick
