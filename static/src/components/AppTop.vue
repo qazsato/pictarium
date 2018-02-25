@@ -1,8 +1,8 @@
 <template>
-  <div class="screen" v-loading="loading">
+  <div class="screen">
     <pic-header action-icon="apps" :action-click="clickAction"></pic-header>
     <main>
-      <section v-if="uploadedImages.length > 0" class="photo-area">
+      <section v-if="uploadedImages.length > 0" class="photo-area" v-loading="loading">
         <img v-for="images in uploadedImages" :key="images" :src="images" class="thumbnail"/>
         <div class="button-container">
           <el-button class="submit-button" @click="submitPhoto">写真を送る</el-button>
@@ -98,6 +98,13 @@ export default {
 
   main {
     padding-top: 60px;
+    height: calc(100% - 60px);
+  }
+
+  .photo-area {
+    padding: 10px 0;
+    min-height: 100%;
+    box-sizing: border-box;
   }
 
   .intro-area {
