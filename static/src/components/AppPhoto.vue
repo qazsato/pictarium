@@ -1,8 +1,8 @@
 <template>
-  <div class="screen" v-loading="loading">
+  <div class="screen">
     <pic-header action-icon="refresh" :action-click="clickAction"></pic-header>
     <main>
-      <ul>
+      <ul v-loading="loading">
         <li v-for="photo in photos" :key="photo">
           <img :data-src="photo" @click="clickPhoto(photo)" alt="" class="lazyload">
         </li>
@@ -71,12 +71,13 @@ export default {
   }
 
   main {
-    margin: 2px 0;
     padding-top: 60px;
+    height: calc(100% - 60px);
   }
 
   ul {
-    margin: 0;
+    min-height: 100%;
+    margin: 2px 0;
     padding: 0;
     list-style: none;
   }
