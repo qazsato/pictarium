@@ -37,7 +37,7 @@ export default {
       photo.get('small')
           .then((urls) => {
             this.loading = false;
-            this.photos = urls;
+            this.photos = urls.reverse(); // 新しい順で格納する
           }).catch(() => {
             this.loading = false;
             this.$message({message: '写真の取得に失敗しました。', type: 'error'});
