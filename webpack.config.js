@@ -1,7 +1,7 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
+  mode: process.env.NODE_ENV,
   entry: {
     'main': ['babel-polyfill', './static/src/main.js']
   },
@@ -44,24 +44,11 @@ module.exports = {
       }
     ]
   },
-  devtool: 'source-map',
+  devtool: this.mode === 'production' ? false : 'source-map',
   resolve: {
     extensions: ['.js'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     }
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: `"${process.env.NODE_ENV}"`
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: (process.env.NODE_ENV !== 'production'),
-      compress: {
-        warnings: false
-      }
-    })
-  ]
+  }
 };
