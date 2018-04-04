@@ -1,6 +1,6 @@
 {
   "name": "pictarium",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "NODE_ENV=development webpack --watch",
@@ -13,7 +13,6 @@
   "dependencies": {
     "aws-sdk": "2.202.0",
     "babel-polyfill": "6.26.0",
-    "co": "4.6.0",
     "element-ui": "2.2.0",
     "gm": "1.23.1",
     "lazysizes": "4.0.1",
